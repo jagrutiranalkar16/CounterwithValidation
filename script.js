@@ -2,7 +2,8 @@
 let counter = 0;
 
 //create span element
-let buttondecrement=document.getElementById('decreament-Button');
+let buttonDecrement=document.getElementById('decreament-Button');
+let buttonIncreament=document.getElementById('incrament-Button');
 const createdElement=document.createElement('span');
 createdElement.textContent = 'You have free shipping';
 //append span element
@@ -22,10 +23,10 @@ createdElementSpan.style.marginLeft='130px';
 
 createdElement.hidden=true;
 createdElementSpan.hidden=true;
-buttondecrement.disabled=true;
+buttonDecrement.disabled=true;
 
 
-function increamentCounter(){
+/*function increamentCounter(){
     counter++;
     document.getElementById("bt-result").innerText = counter;
     if(document.getElementById("bt-result").innerText <=0){ 
@@ -36,29 +37,63 @@ function increamentCounter(){
 
     buttondecrement.disabled=false;
     //console.log(counter);
-}
+}*/
 
-function decreamentCounter(){
+buttonIncreament.addEventListener('click',()=>{
+    counter++;
+    document.getElementById("bt-result").innerText = counter;
+    if(document.getElementById("bt-result").innerText <=0){ 
+        buttonDecrement.disabled=true;
+    } 
+    checkRange();
+    changeColor();
+
+    buttonDecrement.disabled=false;
+    //console.log(counter);
+})
+
+buttonDecrement.addEventListener('click',()=>{
     
     //increament counter only when counter number greater than 0
     if(document.getElementById("bt-result").innerText >0){
         counter--;
         document.getElementById("bt-result").innerText = counter;
         checkRange();
-        buttondecrement.disabled=false;
+        buttonDecrement.disabled=false;
     }
     
     changeColor();
     //disable decrement button when counter is less or equal to 0
     if(document.getElementById("bt-result").innerText <=0){ 
-        buttondecrement.disabled=true;
+        buttonDecrement.disabled=true;
     }
 
     
     //console.log(counter);
-}
+})
+
+/*function decreamentCounter(){
+    
+    //increament counter only when counter number greater than 0
+    if(document.getElementById("bt-result").innerText >0){
+        counter--;
+        document.getElementById("bt-result").innerText = counter;
+        checkRange();
+        buttonDecrement.disabled=false;
+    }
+    
+    changeColor();
+    //disable decrement button when counter is less or equal to 0
+    if(document.getElementById("bt-result").innerText <=0){ 
+        buttonDecrement.disabled=true;
+    }
+
+    
+    //console.log(counter);
+}*/
 
 function clearResult(){
+    counter=0;
     document.getElementById("bt-result").innerText = '0';
 }
 
